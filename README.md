@@ -10,5 +10,5 @@ Recommend to create a symbolic link to /usr/bin/ dir.
 - -h  - print help
 - -o  - open created workspace in VScode
   
-Command
+Command  
 ```make-workspace -m (ext|int) [-o] [-h] /path/to/place```
