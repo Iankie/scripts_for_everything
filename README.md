@@ -1,4 +1,4 @@
-# make_workspace
+## About
 Script for creating dirs workspace for internal/external pentest project
 
 ## Installation 
