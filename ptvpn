@@ -1,0 +1,33 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+    echo "No arguments!"
+elif [ "$1" == "on" ] || [ "$1" == "off" ]; then
+    sudo sh -c 'echo "" > /etc/resolv.conf'
+
+    if [ "$1" == "on" ]; then
+    
+        sudo bash -c 'echo -e "nameserver 8.8.8.8\nnameserver 8.8.4.4" > /etc/resolv.conf'
+        sudo openvpn $pentest_vpn >/dev/null 2>&1 &
+
+        echo -e "USSC VPN Started!\n"
+
+        sleep 3
+
+        check 
+    
+    elif [ "$1" == "off" ]; then
+    
+        sudo pkill openvpn >/dev/null 2>&1
+        sudo bash -c 'echo -e "nameserver 192.168.12.6\nnameserver 192.168.12.7\nnameserver 10.30.16.11\nsearch ussc.ru" > /etc/resolv.conf'
+        
+        echo -e "USSC VPN Stopped!\n"
+
+        sleep 3
+
+        check
+
+    fi
+else
+    echo "Wrong param! Should be 'on' or 'off'"
+fi

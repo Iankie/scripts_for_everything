@@ -1,0 +1,29 @@
+#!/usr/bin/python3
+
+import segno
+import argparse
+from datetime import datetime
+import time
+
+parser = argparse.ArgumentParser(description="something")
+
+parser.add_argument("-l", "--link", required=True, help="Link to source")
+parser.add_argument("-o", "--output", required=False, help="Path to save QR-code")
+parser.add_argument("-s", "--scale", required=False, help="Scale of QR-code (default 5)")
+
+args = parser.parse_args()
+
+qr = segno.make(f"{args.link}")
+
+default_name = str(datetime.now()).replace(" ", "_").replace(":","-").split(".")[0] + ".png"
+
+if args.scale:
+    scale = args.scale
+else: 
+    scale = 5 
+
+if args.output: 
+    qr.save(f"{args.output}", scale=scale)
+else:
+    qr.save(f"/home/kali/Documents/QR-codes/{default_name}", scale=scale)
+
