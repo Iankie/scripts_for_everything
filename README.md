@@ -1,2 +1,2 @@
 ## About
-Scripts on bash for different problems in Linux. 
+Different scripts for any tasks
