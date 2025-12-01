@@ -7,5 +7,5 @@ fetch('http://<TARGET-ENDPOINT>', {
 		'Content-Type':'application/x-www-form-urlencoded'
 	},
 
-body:'<BODY-DATA>'
+body:'<POST-DATA>'
 })
